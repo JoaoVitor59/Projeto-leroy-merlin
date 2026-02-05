@@ -206,25 +206,24 @@ ul {
 .gallery {
   position: relative;
   height: 420px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-
-
 
 .photo {
   position: absolute;
-
-  max-width: 100%;
-  max-height: 100%;
-
-  object-fit: cover;
+  inset: 0;
+  width: 85%;
+  height: 100%;
+  object-fit: contain;
   opacity: 0;
   transform: scale(0.96);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
+
+.photo.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
 
 
 .photo.active {
