@@ -15,6 +15,7 @@
   --text: #1d1d1d;
 }
 
+/* BOTÃO VOLTAR AO TOPO */
 .back-intro {
   position: fixed;
   top: 24px;
@@ -28,11 +29,11 @@
   padding: 10px 16px;
   border-radius: 999px;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Estado escondido */
+/* estado escondido */
 .back-intro.hidden {
   opacity: 0;
   pointer-events: none;
@@ -123,26 +124,6 @@ ul {
   font-size: 1.25rem;
   line-height: 2.2rem;
   padding-left: 20px;
-}
-
-.intro-list a {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  text-decoration: none;
-  color: inherit;
-  padding: 14px 18px;
-  border-radius: 16px;
-  transition: background 0.25s ease, transform 0.2s ease;
-}
-
-.intro-list a:hover {
-  background: var(--green-soft);
-  transform: translateY(-2px);
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 
