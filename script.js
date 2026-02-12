@@ -1,28 +1,25 @@
-const photos = document.querySelectorAll(".photo");
-const section = document.querySelector(".sticky-section");
+const photos = document.querySelectorAll('.photo');
+const section = document.querySelector('.sticky-section');
 
-window.addEventListener("scroll", () => {
-  const rect = section.getBoundingClientRect();
+window.addEventListener('scroll', () => {
+  const start = section.offsetTop;
+  const end = start + section.offsetHeight - window.innerHeight;
+  const scroll = window.scrollY;
 
-  const start = 0;
-  const end = rect.height - window.innerHeight;
+  if (scroll < start || scroll > end) return;
 
-  const current = Math.min(
-    Math.max(-rect.top, start),
-    end
-  );
-
-  const progress = current / end;
-
+  const progress = (scroll - start) / (end - start);
   const index = Math.min(
     photos.length - 1,
     Math.floor(progress * photos.length)
   );
 
-  photos.forEach((img, i) => {
-    img.classList.toggle("active", i === index);
+  photos.forEach((photo, i) => {
+    photo.classList.toggle('active', i === index);
   });
 });
+
+
 
 
 
