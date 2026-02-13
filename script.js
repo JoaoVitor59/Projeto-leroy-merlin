@@ -4,6 +4,7 @@ const gallery = document.querySelector('.gallery');
 const sticky = document.querySelector('.sticky');
 const header = document.querySelector('.sticky .header');
 const text = document.querySelector('.sticky .text');
+const MOBILE_SCROLL_DELAY_RATIO = 0;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -24,7 +25,8 @@ function updateActivePhoto() {
     const stickyTop = stickyStyles
       ? parseFloat(stickyStyles.top || '0') || 0
       : 0;
-    const startOffset = Math.max(-stickyTop, 0);
+    const extraDelay = Math.round(window.innerHeight * MOBILE_SCROLL_DELAY_RATIO);
+    const startOffset = Math.max(-stickyTop, 0) + extraDelay;
     const mobileRange = Math.max(end - startOffset, 1);
     const mobileCurrent = clamp(current - startOffset, 0, mobileRange);
     progress = mobileCurrent / mobileRange;
@@ -57,11 +59,13 @@ function setupSectionHeight() {
     // Start pinning when gallery reaches the center of the viewport.
     const galleryCenterInSticky = gallery.offsetTop + galleryH / 2;
     const desiredTop = Math.round(window.innerHeight / 2 - galleryCenterInSticky);
-    const mobileTop = Math.min(desiredTop, 0);
+    const minTop = -Math.round(window.innerHeight * 0.45);
+    const mobileTop = clamp(desiredTop, minTop, 0);
     sticky.style.top = `${mobileTop}px`;
     sticky.style.height = 'auto';
 
-    const startOffset = Math.max(-mobileTop, 0);
+    const extraDelay = Math.round(window.innerHeight * MOBILE_SCROLL_DELAY_RATIO);
+    const startOffset = Math.max(-mobileTop, 0) + extraDelay;
     section.style.height = `${photos.length * window.innerHeight + startOffset}px`;
   } else {
     section.style.height = `${photos.length * window.innerHeight}px`;
