@@ -270,7 +270,7 @@ ul {
   .sticky {
     grid-template-columns: 1fr;
     position: sticky;
-    top: 0;
+    top: -18vh;
     min-height: 130vh;
     height: auto;
     align-content: start;
@@ -319,6 +319,7 @@ ul {
   }
 
 }
+
 
 
 

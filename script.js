@@ -22,8 +22,7 @@ function updateActivePhoto() {
       (header?.offsetHeight || 0) +
       (text?.offsetHeight || 0) +
       rowGap * 2;
-    const extraDelay = Math.round(window.innerHeight * 3);
-    const delayedStart = startOffset + extraDelay;
+    const delayedStart = startOffset;
     const mobileEnd = Math.max(end - delayedStart, 1);
 
     current = Math.max(current - delayedStart, 0);
@@ -56,8 +55,7 @@ function setupSectionHeight() {
     const galleryH = Math.max(140, Math.min(target, Math.floor(available)));
 
     gallery.style.height = `${galleryH}px`;
-    const extraDelay = Math.round(window.innerHeight * 3);
-    mobileOffset = headerH + textH + rowGap * 2 + extraDelay;
+    mobileOffset = headerH + textH + rowGap * 2;
   }
 
   if (window.innerWidth <= 720) {
@@ -99,5 +97,6 @@ const observer = new IntersectionObserver(
 );
 
 observer.observe(introSection);
+
 
 
